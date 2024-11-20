@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Perfil de Doctores</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />   
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700&display=swap" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+        <link href="css/tooplate-mini-finance.css" rel="stylesheet">
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+        <style>
+            #barra{
+               background-color: #0066009a;
+            }
+            #nav{
+               background: #005200;
+        
+           }
+            #card1{
+               background-color: rgba(169, 169, 169, 0.125); 
+                    }
+            #card2{
+               background-color: rgba(169, 169, 169, 0.125); 
+            }
+            #card3{
+               background-color: rgba(169, 169, 169, 0.125); 
+            }
+            #card4{
+               background-color: rgba(169, 169, 169, 0.125); 
+            }
+            #dtn_buscar{
+               background: rgba(0, 0, 0, 0.39);
+            }
+   
+       .nav-link.text-dark {
+           color: white !important;
+       }
+   
+       .nav-link.text-dark:hover {
+           color: white !important;
+       }
+   
+       .sb-nav-link-icon.text-dark {
+           color: white !important;
+       }
+   
+       .sb-nav-link-icon.text-dark:hover {
+           color: white !important;
+       }
+   
+       .collapse {
+           justify-content: center;
+           transition: none;
+           padding: 0;
+       }
+       #table{
+        width: 100%;
+        height: 100%;
+       }
+
+     #container{
+        width: 90%;
+        margin-left: 50px;
+     }
+       
+   </style>
+   </head>
+   
+   <body>   
+       <body class="sb-nav-fixed">
+           <nav id="barra" class="sb-topnav navbar navbar-expand navbar-dark">
+               <!-- Navbar Brand-->
+               <a class="navbar-brand ps-3 fw-bold" href="index.html">
+                   <img src="./img/PEDIAmen.png" width="200px">
+               </a>
+               <!-- Sidebar Toggle-->
+               <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
+                   <i class="fas fa-bars " style="border: 1px solid rgb(255, 255, 255); padding: 5px;"></i>
+               </button>
+               <!-- Navbar Search-->
+               <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                   <div class="input-group">
+                       <input class="form-control" type="text" placeholder="Buscar" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                       <button id="dtn_buscar" class="btn"  type="button"><i class="fas fa-search" style="color: black;"></i></button>
+                   </div>
+               </form>
+               <!-- Navbar-->
+               <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                   <li class="nav-item dropdown">
+                       <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                           <i class="fas fa-user fa-fw"></i>
+                       </a>
+                       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                           <li>
+                               <a class="dropdown-item" href="#!">
+                                   <div class="sb-nav-link-icon"><i class="fas fa-user"></i>
+                                   Perfil</div>
+                               </a>
+                           </li>
+                           <li>
+                               <a class="dropdown-item" href="#!">
+                                   <div class="sb-nav-link-icon"><i class="fas fa-cog"></i>
+                                   Ajustes</div>
+                               </a>
+                           </li>
+                           <li><hr class="dropdown-divider" /></li>
+                           <li>
+                               <a class="dropdown-item" href="login.html">
+                                   <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i>
+                                   Cerrar Sesión</div>
+                               </a>
+                           </li>
+                       </ul>
+                   </li>
+               </ul>
+           </nav>
+           <div id="layoutSidenav">
+               <div id="layoutSidenav_nav">
+                   <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                       <div class="sb-sidenav-menu" id="nav">
+                           <div class="nav">
+                               <div class="sb-sidenav-menu-heading text-white">Control</div>
+                               <a class="nav-link text-white" href="index.html">
+                                   <div class="sb-nav-link-icon text-white"><i class="fas fa-tachometer-alt " style="font-size: 1.3rem;"> </i></div>
+                                   <span style="font-size: 1.0rem; font-weight: bold;">Panel de control</span>
+                               </a>
+                               <div class="sb-sidenav-menu-heading text-white">Registros</div>
+                               <a class="nav-link text-white" href="mailbox.html">
+                                   <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-envelopes-bulk custom-size" ></i></div>
+                                   <span style="font-size: 1.0rem; font-weight: bold;">Buzon</span>
+                               </a>
+                               <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapseClinic" aria-expanded="false" aria-controls="collapseClinic">
+                                   <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-hospital-user" style="font-size: 1.3rem;"></i></div>
+                                   <span style="font-size: 1.0rem; font-weight: bold;">Pacientes</span>
+                               
+                               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                           </a>
+                           <div class="collapse" id="collapseClinic" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
+                               <nav class="sb-sidenav-menu-nested nav centered-div">
+                                   <a class="nav-link text-white" href="Patients.html">
+                                       <div class="sb-nav-link-icon text-white"> <i class="fa-solid fa-user-plus" style="font-size: 1.3rem;"></i> </div>
+                                       <span style="font-size: 1.0rem;">Nuevo</span>
+                                       
+                                   </a>
+                                   <a class="nav-link text-white" href="history.html">
+                                       <div class="sb-nav-link-icon text-white"> <i class="fa-solid fa-clipboard" style="font-size: 1.3rem;"></i></div>
+                                       <span style="font-size: 1.0rem;">Historial</span>
+                                   </a>
+                               </nav>
+                            </div>
+                               <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapseDoctor" aria-expanded="false" aria-controls="collapseDoctor">
+                                   <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-user-doctor" style="font-size: 1.3rem;"></i></div>
+                                   <span style="font-size: 1.0rem; font-weight: bold;">Doctores</span>
+                               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                           </a>
+                           <div class="collapse" id="collapseDoctor" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
+                               <nav class="sb-sidenav-menu-nested nav centered-div">
+                                   <a class="nav-link text-white" href="doctor.html">
+                                       <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-user-plus" style="font-size: 1.3rem;"></i></div>
+                                       <span style="font-size: 1.0rem;">Registrar</span> 
+                                   </a>
+                                   <a class="nav-link text-white" href="profile.html">
+                                       <div class="sb-nav-link-icon text-white"><i class="fa-regular fa-id-card" style="font-size: 1.3rem;"></i></div>
+                                       <span style="font-size: 1.0rem;">Perfil</span>
+                                       
+                                   </a>
+                                    </nav>
+                               
+                       </div>
+                               <a class="nav-link text-white" href="facture.html">
+                                   <div class="sb-nav-link-icon text-white"><i class="fa-regular fa-money-bill-1" style="font-size: 1.3rem;"></i></div>
+                                   <span style="font-size: 1.0rem; font-weight: bold;">Facturacion </span>
+                                                                 
+                               </a>
+                               <a class="nav-link collapsed text-white" href="" data-bs-toggle="collapse" data-bs-target="#collapseDownloads" aria-expanded="false" aria-controls="collapseDownloads">
+                                   <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-calendar-days" style="font-size: 1.3rem;"></i></div>
+                                   <span style="font-size: 1.0rem; font-weight: bold;">Calendario</span>
+                                   
+                                   <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down" style="font-size: 1.3rem;"></i></div>
+                               </a>
+                               <div class="collapse" id="collapseDownloads" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
+                                   <nav class="sb-sidenav-menu-nested nav centered-div">
+                                       <a class="nav-link text-white" href="cita.html">
+                                           <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-calendar-check" style="font-size: 1.3rem;"></i></div>
+                                           <span style="font-size: 1.0rem;"> Agendar cita</span>
+                                       </a>
+                                        </nav>
+                                    </div>
+                                    <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                       <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-microscope" style="font-size: 1.3rem;"></i></div>
+                                       <span style="font-size: 1.0rem; font-weight: bold;">Examenes medicos</span>
+                                    
+                                   <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down" style="font-size: 1.3rem;"></i></div>
+                               </a>
+                               <div class="collapse" id="collapseExample" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
+                                   <nav class="sb-sidenav-menu-nested nav centered-div">
+                                       <a class="nav-link text-white" href="example.html">
+                                           <div class="sb-nav-link-icon text-white"><i class="fas fa-file-medical" style="font-size: 1.3rem;"></i></div>
+                                           <span style="font-size: 1.0rem;">Agregar</span>
+                                           
+                                       </a>
+                                        </nav>
+                                   </div>
+                           </div>
+                       </nav>
+                   </div>
+            <div id="layoutSidenav_content">
+                <main class="main">
+                    <div  class="container-fluid px-4 mt-1" style="margin-left: 1rem;">
+                        <h1 class="h2 mb-4">Registro De Examenes</h1>
+                    </div>
+                   
+                    <div id="container" class="bg-white" style="border: 1px solid #ddd; border-radius: 8px; padding: 10px;">
+                        <div class="d-flex align-items-center">
+                            <!-- Botón de agregar -->
+                            <button type="button" class="btn btn-sm btn-primary me-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Nuevo
+                            </button>
+                        </div>
+                        <hr>
+                        <div class="table-responsive">
+                            <table id="table" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Paciente</th>
+                                        <th>Identificación</th>
+                                        <th>Acompañante</th>
+                                        <th>Tipo Examen</th>
+                                        <th>Doctor Remitente</th>
+                                        <th>Precio</th>
+                                        <th>Fecha de examen</th>
+                                        <th>Comentarios</th>
+                                        <th>Accion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>luis Ruiz</td>
+                                        <td>3.456.789.012</td>
+                                        <td>Ana Ruiz</td>
+                                        <td>Hemograma</td>
+                                        <td>Dr. Monica Rodriguez</td>
+                                        <td>$50,000</td>
+                                        <td>20/11/2024</td>
+                                        <td>Resultados en 2 días</td>
+                                        <td>
+                                            <button class="btn btn-danger btn-sm"  title="Eliminar" onclick="confirmDelete(this)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                            <button class="btn btn-success btn-sm" title="Actualizar" data-bs-toggle="modal" data-bs-target="#updateModal" onclick="populateModal(this)">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>María Gómez</td>
+                                        <td>2.123.456.789</td>
+                                        <td>José Gómez</td>
+                                        <td>Rayos X</td>
+                                        <td>Dr. Juan Pérez</td>
+                                        <td>$80,000</td>
+                                        <td>19/11/2024</td>
+                                        <td>Ningún comentario</td>
+                                        <td>
+                                            <button class="btn btn-danger btn-sm"  title="Eliminar" onclick="confirmDelete(this)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                            <button class="btn btn-success btn-sm" title="Actualizar" data-bs-toggle="modal" data-bs-target="#updateModal" onclick="populateModal(this)">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Andrés Torres</td>
+                                        <td>4.987.654.321</td>
+                                        <td>Lucía Torres</td>
+                                        <td>Ultrasonido</td>
+                                        <td>Dr. Juan Pérez</td>
+                                        <td>$100,000</td>
+                                        <td>18/11/2024</td>
+                                        <td>Requiere ayuno</td>
+                                        <td>
+                                            <button class="btn btn-danger btn-sm"  title="Eliminar" onclick="confirmDelete(this)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                            <button class="btn btn-success btn-sm" title="Actualizar" data-bs-toggle="modal" data-bs-target="#updateModal" onclick="populateModal(this)">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Sofía López</td>
+                                        <td>1.234.567.890</td>
+                                        <td>Elena López</td>
+                                        <td>Orina</td>
+                                        <td>Dr. Monica Rodriguez</td>
+                                        <td>$30,000</td>
+                                        <td>17/11/2024</td>
+                                        <td>Muestra recolectada a tiempo</td>
+                                        <td>
+                                            <button class="btn btn-danger btn-sm"  title="Eliminar" onclick="confirmDelete(this)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                            <button class="btn btn-success btn-sm" title="Actualizar" data-bs-toggle="modal" data-bs-target="#updateModal" onclick="populateModal(this)">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Pedro Martínez</td>
+                                        <td>5.678.901.234</td>
+                                        <td>Laura Martínez</td>
+                                        <td>Tomografía</td>
+                                        <td>Dr. Juan Pérez</td>
+                                        <td>$200,000</td>
+                                        <td>16/11/2024</td>
+                                        <td>Paciente con claustrofobia</td>
+                                        <td>
+                                            <button class="btn btn-danger btn-sm"  title="Eliminar" onclick="confirmDelete(this)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                            <button class="btn btn-success btn-sm" title="Actualizar" data-bs-toggle="modal" data-bs-target="#updateModal" onclick="populateModal(this)">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="modal fade" id="exampleModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                              <div class="modal-content">
+                                <div class="modal-header bg-light">
+                                  <h5 class="modal-title" id="exampleModalToggleLabel">Nuevo Registro</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="row g-3 mb-3">
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" placeholder="Paciente">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" placeholder="Identificación" aria-label="">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="row g-3 mb-3">
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" placeholder="Telefono" aria-label="">
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <select id="facturarSelect" class="form-select">
+                                                    <option selected>Facturar...</option>
+                                                    <option value="cita">Citas médicas</option>
+                                                    <option value="examen">Examen o Laboratorio</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    
+                                        <div id="opcionesAdicionales" class="row g-3 mb-3 d-none">
+                                            <div class="col-md-6" id="tipoExamenContainer">
+                                                <select class="form-select">
+                                                    <option selected>Tipo de examen</option>
+                                                    <option>Hemograma</option>
+                                                    <option>Rayos X</option>
+                                                    <option>Ultrasonido</option>
+                                                    <option>Orina</option>
+                                                    <option>Tomografía</option>
+                                                </select>
+                                            </div>
+                                    
+                                            <div class="col-md-6" id="tipoCitaContainer">
+                                                <select id="citaSelect" class="form-select">
+                                                    <option selected>Tipo de cita</option>
+                                                    <option value="cita">Primera vez</option>
+                                                    <option value="examen">Control</option>
+                                                </select>                                            </div>
+                                    
+                                            <div class="col-md-6" id="especialidadContainer">
+                                                <input type="text" class="form-control" placeholder="Especialidad">
+                                            </div>
+                                            <div class="col-md-6" id="doctorContainer">
+                                                <input type="text" class="form-control" placeholder="Nombre del doctor">
+                                            </div> 
+                                        </div>
+                                    
+                                        <div class="row g-3 mb-3">
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" placeholder="Costo" aria-label="">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="date" class="form-control" placeholder="Fecha del Examen" aria-label="">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="row g-3 mb-3">
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" placeholder="Edad" aria-label="">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" placeholder="Acompañante" aria-label="">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="row g-3 mb-3">
+                                            <div class="col-12">
+                                                <textarea class="form-control" placeholder="Descripción" id="floatingTextarea2" style="height: 50px"></textarea>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                  <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Guardar</button>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+
+                         <!-- Modal de Actualización -->
+                         <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="updateModalLabel">Actualizar Información</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="updateForm">
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label for="updatePaciente" class="form-label">Paciente</label>
+                                                    <input type="text" class="form-control" id="updatePaciente">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="updateIdentificacion" class="form-label">Identificación</label>
+                                                    <input type="text" class="form-control" id="updateIdentificacion">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label for="updateAcompanante" class="form-label">Acompañante</label>
+                                                    <input type="text" class="form-control" id="updateAcompanante">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="updateTipoExamen" class="form-label">Tipo de Examen</label>
+                                                    <input type="text" class="form-control" id="updateTipoExamen">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label for="updateDoctor" class="form-label">Doctor Remitente</label>
+                                                    <input type="text" class="form-control" id="updateDoctor">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="updatePrecio" class="form-label">Precio</label>
+                                                    <input type="text" class="form-control" id="updatePrecio">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label for="updateFechaExamen" class="form-label">Fecha de Examen</label>
+                                                    <input type="date" class="form-control" id="updateFechaExamen">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="updateComentarios" class="form-label">Comentarios</label>
+                                                    <input type="text" class="form-control" id="updateComentarios">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-primary" onclick="updateRecord()">Actualizar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </main>
+
+            </div>
+</div>
+<script>
+    const facturarSelect = document.getElementById('facturarSelect');
+    const opcionesAdicionales = document.getElementById('opcionesAdicionales');
+    const tipoExamenContainer = document.getElementById('tipoExamenContainer');
+    const tipoCitaContainer = document.getElementById('tipoCitaContainer');
+    const especialidadContainer = document.getElementById('especialidadContainer');
+    const doctorContainer = document.getElementById('doctorContainer');
+
+
+    facturarSelect.addEventListener('change', function () {
+        const selectedValue = facturarSelect.value;
+
+        // Oculta todas las opciones adicionales inicialmente
+        opcionesAdicionales.classList.add('d-none');
+        tipoExamenContainer.classList.add('d-none');
+        tipoCitaContainer.classList.add('d-none');
+        especialidadContainer.classList.add('d-none');
+        doctorContainer.classList.add('d-none');
+
+
+        if (selectedValue === 'examen') {
+            opcionesAdicionales.classList.remove('d-none');
+            tipoExamenContainer.classList.remove('d-none');
+            doctorContainer.classList.remove('d-none');
+        } else if (selectedValue === 'cita') {
+            opcionesAdicionales.classList.remove('d-none');
+            tipoCitaContainer.classList.remove('d-none');
+            especialidadContainer.classList.remove('d-none');
+        }
+    });
+
+    function confirmDelete(button) {
+        const confirmed = confirm("¿Estás seguro de que deseas eliminar este registro?");
+        if (confirmed) {
+            // Eliminar la fila correspondiente
+            const row = button.closest('tr');
+            row.remove();
+
+            // Mostrar un mensaje en la consola
+            console.log("Registro eliminado.");
+        } else {
+            console.log("Eliminación cancelada.");
+        }
+    }
+
+       // Función para llenar el modal con los datos de la fila
+       function populateModal(button) {
+        const row = button.closest('tr');
+        const cells = row.getElementsByTagName('td');
+
+        document.getElementById('updatePaciente').value = cells[1].textContent;
+        document.getElementById('updateIdentificacion').value = cells[2].textContent;
+        document.getElementById('updateAcompanante').value = cells[3].textContent;
+        document.getElementById('updateTipoExamen').value = cells[4].textContent;
+        document.getElementById('updateDoctor').value = cells[5].textContent;
+        document.getElementById('updatePrecio').value = cells[6].textContent;
+        document.getElementById('updateFechaExamen').value = cells[7].textContent;
+        document.getElementById('updateComentarios').value = cells[8].textContent;
+    }
+
+    // Función para actualizar la fila con los datos del modal
+    function updateRecord() {
+        const paciente = document.getElementById('updatePaciente').value;
+        const identificacion = document.getElementById('updateIdentificacion').value;
+        const acompanante = document.getElementById('updateAcompanante').value;
+        const tipoExamen = document.getElementById('updateTipoExamen').value;
+        const doctor = document.getElementById('updateDoctor').value;
+        const precio = document.getElementById('updatePrecio').value;
+        const fechaExamen = document.getElementById('updateFechaExamen').value;
+        const comentarios = document.getElementById('updateComentarios').value;
+
+        // Actualizar la fila correspondiente
+        const row = document.querySelector('tr.selected'); // Selecciona la fila seleccionada
+        const cells = row.getElementsByTagName('td');
+        
+        cells[1].textContent = paciente;
+        cells[2].textContent = identificacion;
+        cells[3].textContent = acompanante;
+        cells[4].textContent = tipoExamen;
+        cells[5].textContent = doctor;
+        cells[6].textContent = precio;
+        cells[7].textContent = fechaExamen;
+        cells[8].textContent = comentarios;
+
+        // Cerrar el modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('updateModal'));
+        modal.hide();
+    }
+</script>
+
+<!-- JAVASCRIPT FILES -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/custom.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+ <script src="js/scripts.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+ <script src="js/datatables-simple-demo.js"></script>
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de doctores</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="css/css.css">
+</head>
+    <style>
+        .calendar-container {
+            width: 80%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        #barra{
+           background-color: #0066009a;
+        }
+        #nav{
+           background: #005200;
+    
+       }
+        #card1{
+           background-color: rgba(169, 169, 169, 0.125); 
+                }
+        #card2{
+           background-color: rgba(169, 169, 169, 0.125); 
+        }
+        #card3{
+           background-color: rgba(169, 169, 169, 0.125); 
+        }
+        #card4{
+           background-color: rgba(169, 169, 169, 0.125); 
+        }
+        #dtn_buscar{
+           background: rgba(0, 0, 0, 0.39);
+        }
+
+   .nav-link.text-dark {
+       color: white !important;
+   }
+
+   .nav-link.text-dark:hover {
+       color: white !important;
+   }
+
+   .sb-nav-link-icon.text-dark {
+       color: white !important;
+   }
+
+   .sb-nav-link-icon.text-dark:hover {
+       color: white !important;
+   }
+
+   .collapse {
+       justify-content: center;
+       transition: none;
+       padding: 0;
+   }
+
+</style>
+</head>
+
+<body>   
+   <body class="sb-nav-fixed">
+       <nav id="barra" class="sb-topnav navbar navbar-expand navbar-dark">
+           <!-- Navbar Brand-->
+           <a class="navbar-brand ps-3 fw-bold" href="index.html">
+               <img src="./img/PEDIAmen.png" width="200px">
+           </a>
+           <!-- Sidebar Toggle-->
+           <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
+               <i class="fas fa-bars " style="border: 1px solid rgb(255, 255, 255); padding: 5px;"></i>
+           </button>
+           <!-- Navbar Search-->
+           <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+               <div class="input-group">
+                   <input class="form-control" type="text" placeholder="Buscar" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                   <button id="dtn_buscar" class="btn"  type="button"><i class="fas fa-search" style="color: black;"></i></button>
+               </div>
+           </form>
+           <!-- Navbar-->
+           <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+               <li class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                       <i class="fas fa-user fa-fw"></i>
+                   </a>
+                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                       <li>
+                           <a class="dropdown-item" href="#!">
+                               <div class="sb-nav-link-icon"><i class="fas fa-user"></i>
+                               Perfil</div>
+                           </a>
+                       </li>
+                       <li>
+                           <a class="dropdown-item" href="#!">
+                               <div class="sb-nav-link-icon"><i class="fas fa-cog"></i>
+                               Ajustes</div>
+                           </a>
+                       </li>
+                       <li><hr class="dropdown-divider" /></li>
+                       <li>
+                           <a class="dropdown-item" href="login.html">
+                               <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i>
+                               Cerrar Sesión</div>
+                           </a>
+                       </li>
+                   </ul>
+               </li>
+           </ul>
+       </nav>
+       <div id="layoutSidenav">
+           <div id="layoutSidenav_nav">
+               <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                   <div class="sb-sidenav-menu" id="nav">
+                       <div class="nav">
+                           <div class="sb-sidenav-menu-heading text-white">Control</div>
+                           <a class="nav-link text-white" href="index.html">
+                               <div class="sb-nav-link-icon text-white"><i class="fas fa-tachometer-alt " style="font-size: 1.3rem;"> </i></div>
+                               <span style="font-size: 1.0rem; font-weight: bold;">Panel de control</span>
+                           </a>
+                           <div class="sb-sidenav-menu-heading text-white">Registros</div>
+                           <a class="nav-link text-white" href="mailbox.html">
+                               <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-envelopes-bulk custom-size" ></i></div>
+                               <span style="font-size: 1.0rem; font-weight: bold;">Buzon</span>
+                           </a>
+                           <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapseClinic" aria-expanded="false" aria-controls="collapseClinic">
+                               <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-hospital-user" style="font-size: 1.3rem;"></i></div>
+                               <span style="font-size: 1.0rem; font-weight: bold;">Pacientes</span>
+                           
+                           <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                       </a>
+                       <div class="collapse" id="collapseClinic" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
+                           <nav class="sb-sidenav-menu-nested nav centered-div">
+                               <a class="nav-link text-white" href="Patients.html">
+                                   <div class="sb-nav-link-icon text-white"> <i class="fa-solid fa-user-plus" style="font-size: 1.3rem;"></i> </div>
+                                   <span style="font-size: 1.0rem;">Nuevo</span>
+                                   
+                               </a>
+                               <a class="nav-link text-white" href="history.html">
+                                   <div class="sb-nav-link-icon text-white"> <i class="fa-solid fa-clipboard" style="font-size: 1.3rem;"></i></div>
+                                   <span style="font-size: 1.0rem;">Historial</span>
+                               </a>
+                           </nav>
+                        </div>
+                           <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapseDoctor" aria-expanded="false" aria-controls="collapseDoctor">
+                               <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-user-doctor" style="font-size: 1.3rem;"></i></div>
+                               <span style="font-size: 1.0rem; font-weight: bold;">Doctores</span>
+                           <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                       </a>
+                       <div class="collapse" id="collapseDoctor" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
+                           <nav class="sb-sidenav-menu-nested nav centered-div">
+                               <a class="nav-link text-white" href="doctor.html">
+                                   <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-user-plus" style="font-size: 1.3rem;"></i></div>
+                                   <span style="font-size: 1.0rem;">Registrar</span> 
+                               </a>
+                               <a class="nav-link text-white" href="profile.html">
+                                   <div class="sb-nav-link-icon text-white"><i class="fa-regular fa-id-card" style="font-size: 1.3rem;"></i></div>
+                                   <span style="font-size: 1.0rem;">Perfil</span>
+                                   
+                               </a>
+                                </nav>
+                           
+                   </div>
+                           <a class="nav-link text-white" href="facture.html">
+                               <div class="sb-nav-link-icon text-white"><i class="fa-regular fa-money-bill-1" style="font-size: 1.3rem;"></i></div>
+                               <span style="font-size: 1.0rem; font-weight: bold;">Facturacion </span>
+                                                             
+                           </a>
+                           <a class="nav-link collapsed text-white" href="" data-bs-toggle="collapse" data-bs-target="#collapseDownloads" aria-expanded="false" aria-controls="collapseDownloads">
+                               <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-calendar-days" style="font-size: 1.3rem;"></i></div>
+                               <span style="font-size: 1.0rem; font-weight: bold;">Calendario</span>
+                               
+                               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down" style="font-size: 1.3rem;"></i></div>
+                           </a>
+                           <div class="collapse" id="collapseDownloads" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
+                               <nav class="sb-sidenav-menu-nested nav centered-div">
+                                   <a class="nav-link text-white" href="cita.html">
+                                       <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-calendar-check" style="font-size: 1.3rem;"></i></div>
+                                       <span style="font-size: 1.0rem;"> Agendar cita</span>
+                                   </a>
+                                    </nav>
+                                </div>
+                                <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                   <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-microscope" style="font-size: 1.3rem;"></i></div>
+                                   <span style="font-size: 1.0rem; font-weight: bold;">Examenes medicos</span>
+                                
+                               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down" style="font-size: 1.3rem;"></i></div>
+                           </a>
+                           <div class="collapse" id="collapseExample" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
+                               <nav class="sb-sidenav-menu-nested nav centered-div">
+                                   <a class="nav-link text-white" href="example.html">
+                                       <div class="sb-nav-link-icon text-white"><i class="fas fa-file-medical" style="font-size: 1.3rem;"></i></div>
+                                       <span style="font-size: 1.0rem;">Agregar</span>
+                                       
+                                   </a>
+                                    </nav>
+                               </div>
+                       </div>
+                   </nav>
+               </div>
+
+            <div id="layoutSidenav_content">
+                
+                <main >
+                    <br>
+                   <div class="container-fluid px-4 mt-0" style="margin-left: 0rem;">
+                        <h1 class="h2 mb-4">Profile</h1>
+                        </div>
+                        <div class="row mb-4 px-4">
+                        <!-- Columna 1: Información personal (con foto y botón) -->
+                        <div class="col-lg-4 col-12 mb-3">
+                            <div class="bg-light custom-block custom-block-profile p-3" style="border: 1px solid #ddd; border-radius: 8px;">
+                                <div class="row">
+                                    <!-- Imagen de perfil -->
+                                    <div class="col-lg-12 col-12 mb-3">
+                                        <div class="custom-block-profile-image-wrap">
+                                            <img src="img/profile.jpg" class="custom-block-profile-image img-fluid" alt="">
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-5"><strong>Nombre:</strong></div>
+                                    <div class="col-7">Monica Rodriguez</div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-5"><strong>Identificación:</strong></div>
+                                    <div class="col-7">1.165.588.056</div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-5"><strong>Email:</strong></div>
+                                    <div class="col-7">
+                                        <a href="mailto:Monica25@gmail.com">Monica@gmail.com</a>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-5"><strong>Nacimiento:</strong></div>
+                                    <div class="col-7">20-05-1992, Barranquilla</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-5"><strong>Teléfono:</strong></div>
+                                    <div class="col-7">
+                                        <a href="tel:+573001234567">300 123 45 67</a>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-center mt-2">
+                                    <button class="btn btn-primary btn-sm">
+                                        <a href="setting.html" class="text-white text-decoration-none d-flex align-items-center">
+                                            <span class="text-white">Editar</span>
+                                            <i class="fa-solid fa-pencil fa-sm"></i>
+                                        </a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <!-- Columna 2: Vacía -->
+                        <div class="col-lg-4 col-12 mb-3 bg-ligth">
+                            <div class="bg-light custom-block custom-block-contact p-3" style="border: 1px solid #ddd; border-radius: 8px;">
+                                <h6 class="mb-4" style="font-size: 1rem; font-weight: bold;">Formacion Academica</h6>
+                                <div class="row mb-2">
+                                    <div class="col-5"><strong>Titulo:</strong></div>
+                                    <div class="col-7">Médico Cirujano - UNC (2010)</div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-5"><strong>Especialidad:</strong></div>
+                                    <div class="col-7">Pediatra - UDA (2015)</div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-5"><strong>Certificación en Pediatría:</strong></div>
+                                    <div class="col-7">Hospital Infantil de Bogotá (2017)</div>
+                                </div>
+                                <hr>
+                                <h6 class="mb-4" style="font-size: 1rem; font-weight: bold;">Experiencia Laboral</h6>
+                            <li>Pediatra General - CSI, Bogotá (2015-2020)</li>                  
+                            <li>Pediatra Respiratorio - HNB, Medellin (2020-2023)</li>   
+                            <li>Medico Cirujano Pediatra - CCP, Barranquilla (2023-Actualidad)</li>   
+                            <hr>
+                            <h6 class="mb-4" style="font-size: 1rem; font-weight: bold;">Idiomas</h6>
+                                <li>Español (nativo)</li>
+                                <li>Inglés (avanzado)</li>
+                                <hr>
+                                <div class="d-flex justify-content-center mt-2">
+                                    <button class="btn btn-primary btn-sm">
+                                        <a href="setting.html" class="text-white text-decoration-none d-flex align-items-center">
+                                            <span class="text-white">Editar</span>
+                                            <i class="fa-solid fa-pencil fa-sm"></i>
+                                        </a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <!-- Columna 3: Agenda de Citas -->
+                        <div class="col-lg-4 col-12 mb-3" >
+                            <div class="bg-light" style="border: 1px solid #ddd; border-radius: 8px; margin-left: 0rem;">
+                                    <div class="calendar">
+                                        <h6 class="mb-4" style="font-size: 1.5rem; font-weight: bold;">Candelario</h6>
+                                        <hr>
+                                        <div class="calendar-header">
+                                            <button class="text-black" id="prev-year">&laquo; </button>
+                                            <button class="text-black" id="prev-month">&laquo; </button>
+                                            <div>
+                                                <span id="month">January</span> 
+                                                <span class="" id="year">2024</span>
+                                            </div>
+                                            <button class="text-black" id="next-month"> &raquo;</button>
+                                            <button class="text-black" id="next-year"> &raquo;</button>
+                                        </div>
+                                        <div class="calendar-days"></div>
+                                    </div>     
+                            </div>
+                       
+                    </div>
+                    <div class="bg-white" style="border: 1px solid #ddd; border-radius: 8px; padding: 10px;">
+                        <div class="d-flex align-items-center">
+                            <h6 class="m-0 me-3" style="font-size: 1.2rem; font-weight: bold;">Lista de doctores</h6>
+                            <!-- Botón de agregar -->
+                            <button type="button" class="btn btn-sm btn-success me-2">
+                                <i class="fa-regular fa-file-pdf"></i> PDF
+                            </button>
+                           
+                        </div>
+                        <hr>
+                        <div class="table-responsive">
+                            <table id="table" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nombre</th>
+                                        <th>Identificación</th>
+                                        <th>Nacimiento</th>
+                                        <th>Gmail</th>
+                                        <th>Teléfono</th>
+                                        <th>Ciudad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Dr. Juan Pérez</td>
+                                        <td>2.165.585.056</td>
+                                        <td>01/01/1980</td>
+                                        <td>juan.perez@gmail.com</td>
+                                        <td>300 123 4567</td>
+                                        <td>Barranquilla</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Dr. Monica Rodriguez</td>
+                                        <td>1.165.588.056</td>
+                                        <td>20/05/1992, Barranquilla</td>
+                                        <td>monica@gmail.com</td>
+                                        <td>300 123 45 67</td>
+                                        <td>Barranquilla</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Dr. Juan Pérez</td>
+                                        <td>1.124.895.056</td>
+                                        <td>01/25/1991</td>
+                                        <td>Lopez23@gmail.com</td>
+                                        <td>300 123 4567</td>
+                                        <td>Bogota</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+                </main>
+            </div>
+
+</body>
+<script src="js/calendary.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="js/scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="assets/demo/chart-area-demo.js"></script>
+<script src="assets/demo/chart-bar-demo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+<script src="js/datatables-simple-demo.js"></script>
+
+</html>

@@ -1,0 +1,106 @@
+/* Contenedor principal */
+#layoutSidenav_content {
+    font-family: 'Arial', sans-serif;
+    background-color: white;
+    color: #343a40;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+#mail {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+#boton{
+    color: #16191b ;
+    background-color: #aaccee;
+    border-color: #ffffff;
+}
+
+
+/* Panel de contenido */
+.flex-1 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color:white;
+}
+
+.flex.items-center.space-x-4 input[type="text"] {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 8px;
+    outline: none;
+}
+
+/* Lista de correos */
+.flex-1.bg-white.bg-opacity-75.p-4 {
+    overflow-y: auto;
+}
+
+.border-b {
+    border-bottom: 1px solid #dee2e6;
+    padding: 10px 0;
+    transition: background-color 0.3s ease;
+}
+
+.border-b:hover {
+    background-color: #f1f1f1;
+}
+
+.border-b .font-bold {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.border-b .w-8.h-8 {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Etiquetas */
+.bg-gray-200 {
+    background-color: #aaccee;
+}
+
+.bg-gray-200:hover {
+    background-color: #d6d8db;
+}
+
+.table-auto {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+.table-auto thead {
+    background-color: rgba(214, 208, 208, 0.918);
+    font-weight: bold;
+}
+
+.table-auto th, .table-auto td {
+    text-align: left;
+    padding: 8px 12px;
+}
+
+.table-auto tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.123);
+}
+
+.table-auto tbody tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+.border-b {
+    border-bottom: 2px solid white;
+}
+
+.flex.items-center.space-x-2 div {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.875rem;
+}

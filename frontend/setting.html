@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setting</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="css/tooplate-mini-finance.css" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+    <style>
+       
+        #barra{
+           background-color: #0066009a;
+        }
+        #nav{
+           background: #005200;
+    
+       }
+        #card1{
+           background-color: rgba(169, 169, 169, 0.125); 
+                }
+        #card2{
+           background-color: rgba(169, 169, 169, 0.125); 
+        }
+        #card3{
+           background-color: rgba(169, 169, 169, 0.125); 
+        }
+        #card4{
+           background-color: rgba(169, 169, 169, 0.125); 
+        }
+        #dtn_buscar{
+           background: rgba(0, 0, 0, 0.39);
+        }
+
+   .nav-link.text-dark {
+       color: white !important;
+   }
+
+   .nav-link.text-dark:hover {
+       color: white !important;
+   }
+
+   .sb-nav-link-icon.text-dark {
+       color: white !important;
+   }
+
+   .sb-nav-link-icon.text-dark:hover {
+       color: white !important;
+   }
+
+   .collapse {
+       justify-content: center;
+       transition: none;
+       padding: 0;
+   }
+
+</style>
+</head>
+
+<body>   
+   <body class="sb-nav-fixed">
+       <nav id="barra" class="sb-topnav navbar navbar-expand navbar-dark">
+           <!-- Navbar Brand-->
+           <a class="navbar-brand ps-3 fw-bold" href="index.html">
+               <img src="./img/PEDIAmen.png" width="200px">
+           </a>
+           <!-- Sidebar Toggle-->
+           <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
+               <i class="fas fa-bars " style="border: 1px solid rgb(255, 255, 255); padding: 5px;"></i>
+           </button>
+           <!-- Navbar Search-->
+           <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+               <div class="input-group">
+                   <input class="form-control" type="text" placeholder="Buscar" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                   <button id="dtn_buscar" class="btn"  type="button"><i class="fas fa-search" style="color: black;"></i></button>
+               </div>
+           </form>
+           <!-- Navbar-->
+           <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+               <li class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                       <i class="fas fa-user fa-fw"></i>
+                   </a>
+                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                       <li>
+                           <a class="dropdown-item" href="#!">
+                               <div class="sb-nav-link-icon"><i class="fas fa-user"></i>
+                               Perfil</div>
+                           </a>
+                       </li>
+                       <li>
+                           <a class="dropdown-item" href="#!">
+                               <div class="sb-nav-link-icon"><i class="fas fa-cog"></i>
+                               Ajustes</div>
+                           </a>
+                       </li>
+                       <li><hr class="dropdown-divider" /></li>
+                       <li>
+                           <a class="dropdown-item" href="login.html">
+                               <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i>
+                               Cerrar Sesión</div>
+                           </a>
+                       </li>
+                   </ul>
+               </li>
+           </ul>
+       </nav>
+       <div id="layoutSidenav">
+           <div id="layoutSidenav_nav">
+               <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                   <div class="sb-sidenav-menu" id="nav">
+                       <div class="nav">
+                           <div class="sb-sidenav-menu-heading text-white">Control</div>
+                           <a class="nav-link text-white" href="index.html">
+                               <div class="sb-nav-link-icon text-white"><i class="fas fa-tachometer-alt " style="font-size: 1.3rem;"> </i></div>
+                               <span style="font-size: 1.0rem; font-weight: bold;">Panel de control</span>
+                           </a>
+                           <div class="sb-sidenav-menu-heading text-white">Registros</div>
+                           <a class="nav-link text-white" href="mailbox.html">
+                               <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-envelopes-bulk custom-size" ></i></div>
+                               <span style="font-size: 1.0rem; font-weight: bold;">Buzon</span>
+                           </a>
+                           <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapseClinic" aria-expanded="false" aria-controls="collapseClinic">
+                               <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-hospital-user" style="font-size: 1.3rem;"></i></div>
+                               <span style="font-size: 1.0rem; font-weight: bold;">Pacientes</span>
+                           
+                           <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                       </a>
+                       <div class="collapse" id="collapseClinic" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
+                           <nav class="sb-sidenav-menu-nested nav centered-div">
+                               <a class="nav-link text-white" href="Patients.html">
+                                   <div class="sb-nav-link-icon text-white"> <i class="fa-solid fa-user-plus" style="font-size: 1.3rem;"></i> </div>
+                                   <span style="font-size: 1.0rem;">Nuevo</span>
+                                   
+                               </a>
+                               <a class="nav-link text-white" href="history.html">
+                                   <div class="sb-nav-link-icon text-white"> <i class="fa-solid fa-clipboard" style="font-size: 1.3rem;"></i></div>
+                                   <span style="font-size: 1.0rem;">Historial</span>
+                               </a>
+                           </nav>
+                        </div>
+                           <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapseDoctor" aria-expanded="false" aria-controls="collapseDoctor">
+                               <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-user-doctor" style="font-size: 1.3rem;"></i></div>
+                               <span style="font-size: 1.0rem; font-weight: bold;">Doctores</span>
+                           <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                       </a>
+                       <div class="collapse" id="collapseDoctor" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
+                           <nav class="sb-sidenav-menu-nested nav centered-div">
+                               <a class="nav-link text-white" href="doctor.html">
+                                   <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-user-plus" style="font-size: 1.3rem;"></i></div>
+                                   <span style="font-size: 1.0rem;">Registrar</span> 
+                               </a>
+                               <a class="nav-link text-white" href="profile.html">
+                                   <div class="sb-nav-link-icon text-white"><i class="fa-regular fa-id-card" style="font-size: 1.3rem;"></i></div>
+                                   <span style="font-size: 1.0rem;">Perfil</span>
+                                   
+                               </a>
+                                </nav>
+                           
+                   </div>
+                           <a class="nav-link text-white" href="facture.html">
+                               <div class="sb-nav-link-icon text-white"><i class="fa-regular fa-money-bill-1" style="font-size: 1.3rem;"></i></div>
+                               <span style="font-size: 1.0rem; font-weight: bold;">Facturacion </span>
+                                                             
+                           </a>
+                           <a class="nav-link collapsed text-white" href="" data-bs-toggle="collapse" data-bs-target="#collapseDownloads" aria-expanded="false" aria-controls="collapseDownloads">
+                               <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-calendar-days" style="font-size: 1.3rem;"></i></div>
+                               <span style="font-size: 1.0rem; font-weight: bold;">Calendario</span>
+                               
+                               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down" style="font-size: 1.3rem;"></i></div>
+                           </a>
+                           <div class="collapse" id="collapseDownloads" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
+                               <nav class="sb-sidenav-menu-nested nav centered-div">
+                                   <a class="nav-link text-white" href="cita.html">
+                                       <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-calendar-check" style="font-size: 1.3rem;"></i></div>
+                                       <span style="font-size: 1.0rem;"> Agendar cita</span>
+                                   </a>
+                                    </nav>
+                                </div>
+                                <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                   <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-microscope" style="font-size: 1.3rem;"></i></div>
+                                   <span style="font-size: 1.0rem; font-weight: bold;">Examenes medicos</span>
+                                
+                               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down" style="font-size: 1.3rem;"></i></div>
+                           </a>
+                           <div class="collapse" id="collapseExample" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
+                               <nav class="sb-sidenav-menu-nested nav centered-div">
+                                   <a class="nav-link text-white" href="example.html">
+                                       <div class="sb-nav-link-icon text-white"><i class="fas fa-file-medical" style="font-size: 1.3rem;"></i></div>
+                                       <span style="font-size: 1.0rem;">Agregar</span>
+                                       
+                                   </a>
+                                    </nav>
+                               </div>
+                       </div>
+                   </nav>
+               </div>
+
+            <div id="layoutSidenav_content">
+                <main >
+                    <br>
+                    <div class="container-fluid px-4 mt-0" style="margin-bottom: -1rem;">
+                        <h1 class="h2 mb-0">Configuracion</h1>
+                    </div>
+
+                    <div class="row my-4 px-4 ">
+                        <div class="col-lg-7 col-12">
+                            <div class="custom-block bg-light">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="true">Perfil</button>
+                                    </li>
+
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="password-tab" data-bs-toggle="tab" data-bs-target="#password-tab-pane" type="button" role="tab" aria-controls="password-tab-pane" aria-selected="false">Editar</button>
+                                    </li>
+
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="notification-tab" data-bs-toggle="tab" data-bs-target="#notification-tab-pane" type="button" role="tab" aria-controls="notification-tab-pane" aria-selected="false">Eliminar</button>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content bg-light" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                                        <h6 class="mb-4">Agregar</h6>
+
+                                        <form class="custom-form profile-form" action="#" method="post" role="form">
+                                            <div class="row mb-1">
+                                                <div class="col-6">
+                                                    <input type="text" class="form-control" placeholder="Nombre">
+                                                </div>
+                                                <div class="col-6">
+                                                    <input type="text" class="form-control" placeholder="Identificacion" aria-label="">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-1">
+                                                <div class="col-6">
+                                                    <input type="text" class="form-control" placeholder="Nacimiento">
+                                                </div>
+                                                <div class="col-6">
+                                                    <input type="mail" class="form-control" placeholder="Gmail" aria-label="">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-6">
+                                                    <input type="text" class="form-control" placeholder="Telefono">
+                                                </div>
+                                                <div class="col-6">
+                                                    <input type="text" class="form-control" placeholder="Cuidad" aria-label="">
+                                                </div>
+                                            </div>
+                                            <div class="input-group mb-1">
+                                                <img src="img/user.png" class="profile-image img-fluid" alt="">
+
+                                                <input type="file" class="form-control" id="inputGroupFile02">
+                                            </div>
+
+                                            <div class="d-flex">
+                                                <button type="button" class="form-control me-3">
+                                                    Cancelar
+                                                </button>
+
+                                                <button type="submit" class="form-control ms-2">
+                                                    Guardar
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="password-tab-pane" role="tabpanel" aria-labelledby="password-tab" tabindex="0">
+                                        <h6 class="mb-4">Actualizar</h6>
+
+                                        <form class="custom-form password-form" action="#" method="post" role="form">
+                                            <div class="row mb-1">
+                                                <div class="col-6">
+                                                    <input type="text" class="form-control" placeholder="Nombre">
+                                                </div>
+                                                <div class="col-6">
+                                                    <input type="text" class="form-control" placeholder="Identificacion" aria-label="">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-1">
+                                                <div class="col-6">
+                                                    <input type="text" class="form-control" placeholder="Nacimiento">
+                                                </div>
+                                                <div class="col-6">
+                                                    <input type="mail" class="form-control" placeholder="Gmail" aria-label="">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-6">
+                                                    <input type="text" class="form-control" placeholder="Telefono">
+                                                </div>
+                                                <div class="col-6">
+                                                    <input type="text" class="form-control" placeholder="Cuidad" aria-label="">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="d-flex">
+                                                <button type="button" class="form-control me-3">
+                                                    Cancelar
+                                                </button>
+
+                                                <button type="submit" class="form-control ms-2">
+                                                   Guardar Cambios
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="notification-tab-pane" role="tabpanel" aria-labelledby="notification-tab" tabindex="0">
+                                        <h6 class="mb-4">Delete</h6>
+
+                                        <form class="custom-form notification-form" action="#" method="post" role="form">
+
+                                            <div class="input-group mb-3">
+                                                <label class="input-group-text" for="inputGroupSelect01">ID</label>
+                                                <select class="form-select" id="inputGroupSelect01">
+                                                  <option selected>Eliminar Registros</option>
+                                                  <option value="1">1</option>
+                                                  <option value="2">2</option>
+                                                  <option value="3">3</option>
+                                                </select>
+                                              </div>
+                                              
+
+                                            <div class="d-flex mt-4">
+                                                <button type="submit" class="form-control ms-2">
+                                                    Proceder a la eliminacion
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5 col-12">
+                            <div class="custom-block custom-block-contact" style="background-color: #92e27a6d;">
+                                <h6 class="mb-4 text-center">Foto De Perfil</h6>
+                                <div class="row">
+                                    <!-- Imagen de perfil -->
+                                    <div class="col-lg-12 col-12 mb-3">
+                                        <div  class="justify-content-center">
+                                            <img src="img/profile.jpg" alt="" width="515px" height="350px">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mt-2">
+                                        <!-- Botón Volver -->
+                                        <button class="form-control ms-1">
+                                            <a href="profile.html" class="text-dark text-decoration-none">
+                                                Volver
+                                            </a>
+                                        </button>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </main>
+            </div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="js/scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="assets/demo/chart-area-demo.js"></script>
+<script src="assets/demo/chart-bar-demo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+<script src="js/datatables-simple-demo.js"></script>
+
+</html>

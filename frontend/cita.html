@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citas medicas</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+<!-- FullCalendar CSS -->
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css" rel="stylesheet">
+<!-- FullCalendar JS -->
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+
+</head>
+    <style>
+        #barra{
+           background-color: #0066009a;
+        }
+        #nav{
+           background: #005200;
+    
+       }
+        #card1{
+           background-color: rgba(169, 169, 169, 0.125); 
+                }
+        #card2{
+           background-color: rgba(169, 169, 169, 0.125); 
+        }
+        #card3{
+           background-color: rgba(169, 169, 169, 0.125); 
+        }
+        #card4{
+           background-color: rgba(169, 169, 169, 0.125); 
+        }
+        #dtn_buscar{
+           background: rgba(0, 0, 0, 0.39);
+        }
+
+   .nav-link.text-dark {
+       color: white !important;
+   }
+
+   .nav-link.text-dark:hover {
+       color: white !important;
+   }
+
+   .sb-nav-link-icon.text-dark {
+       color: white !important;
+   }
+
+   .sb-nav-link-icon.text-dark:hover {
+       color: white !important;
+   }
+
+   .collapse {
+       justify-content: center;
+       transition: none;
+       padding: 0;
+   }
+
+    #calendar {
+        max-width: 95%;      /* Cambia esto a un valor que se ajuste a tu diseño */
+        margin: 0 auto;      /* Centra el calendario horizontalmente */
+        height: 800px;       /* Ajusta la altura como prefieras */
+        margin-top: 20px;
+        background-color: #f8f9fa; /* Color de fondo light */
+        border: 2px solid #ccc;  /* Borde gris */
+        border-radius: 10px;     /* Bordes redondeados */
+        padding: 25px;           /* Espaciado interno */
+    }
+  /* Reducción del tamaño de los eventos */
+  .fc-event {
+    font-size: 12px;   /* Reduce el tamaño de la fuente de los eventos */
+}
+
+.fc-daygrid-day {
+    padding: -15px;   /* Reduce el espacio en las celdas */
+}
+
+</style>
+</head>
+
+<body>   
+   <body class="sb-nav-fixed">
+       <nav id="barra" class="sb-topnav navbar navbar-expand navbar-dark">
+           <!-- Navbar Brand-->
+           <a class="navbar-brand ps-3 fw-bold" href="index.html">
+               <img src="./img/PEDIAmen.png" width="200px">
+           </a>
+           <!-- Sidebar Toggle-->
+           <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
+               <i class="fas fa-bars " style="border: 1px solid rgb(255, 255, 255); padding: 5px;"></i>
+           </button>
+           <!-- Navbar Search-->
+           <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+               <div class="input-group">
+                   <input class="form-control" type="text" placeholder="Buscar" aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                   <button id="dtn_buscar" class="btn"  type="button"><i class="fas fa-search" style="color: black;"></i></button>
+               </div>
+           </form>
+           <!-- Navbar-->
+           <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+               <li class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                       <i class="fas fa-user fa-fw"></i>
+                   </a>
+                   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                       <li>
+                           <a class="dropdown-item" href="#!">
+                               <div class="sb-nav-link-icon"><i class="fas fa-user"></i>
+                               Perfil</div>
+                           </a>
+                       </li>
+                       <li>
+                           <a class="dropdown-item" href="#!">
+                               <div class="sb-nav-link-icon"><i class="fas fa-cog"></i>
+                               Ajustes</div>
+                           </a>
+                       </li>
+                       <li><hr class="dropdown-divider" /></li>
+                       <li>
+                           <a class="dropdown-item" href="login.html">
+                               <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i>
+                               Cerrar Sesión</div>
+                           </a>
+                       </li>
+                   </ul>
+               </li>
+           </ul>
+       </nav>
+       <div id="layoutSidenav">
+           <div id="layoutSidenav_nav">
+               <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                   <div class="sb-sidenav-menu" id="nav">
+                       <div class="nav">
+                           <div class="sb-sidenav-menu-heading text-white">Control</div>
+                           <a class="nav-link text-white" href="index.html">
+                               <div class="sb-nav-link-icon text-white"><i class="fas fa-tachometer-alt " style="font-size: 1.3rem;"> </i></div>
+                               <span style="font-size: 1.0rem; font-weight: bold;">Panel de control</span>
+                           </a>
+                           <div class="sb-sidenav-menu-heading text-white">Registros</div>
+                           <a class="nav-link text-white" href="mailbox.html">
+                               <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-envelopes-bulk custom-size" ></i></div>
+                               <span style="font-size: 1.0rem; font-weight: bold;">Buzon</span>
+                           </a>
+                           <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapseClinic" aria-expanded="false" aria-controls="collapseClinic">
+                               <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-hospital-user" style="font-size: 1.3rem;"></i></div>
+                               <span style="font-size: 1.0rem; font-weight: bold;">Pacientes</span>
+                           
+                           <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                       </a>
+                       <div class="collapse" id="collapseClinic" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
+                           <nav class="sb-sidenav-menu-nested nav centered-div">
+                               <a class="nav-link text-white" href="Patients.html">
+                                   <div class="sb-nav-link-icon text-white"> <i class="fa-solid fa-user-plus" style="font-size: 1.3rem;"></i> </div>
+                                   <span style="font-size: 1.0rem;">Nuevo</span>
+                                   
+                               </a>
+                               <a class="nav-link text-white" href="history.html">
+                                   <div class="sb-nav-link-icon text-white"> <i class="fa-solid fa-clipboard" style="font-size: 1.3rem;"></i></div>
+                                   <span style="font-size: 1.0rem;">Historial</span>
+                               </a>
+                           </nav>
+                        </div>
+                           <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapseDoctor" aria-expanded="false" aria-controls="collapseDoctor">
+                               <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-user-doctor" style="font-size: 1.3rem;"></i></div>
+                               <span style="font-size: 1.0rem; font-weight: bold;">Doctores</span>
+                           <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                       </a>
+                       <div class="collapse" id="collapseDoctor" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
+                           <nav class="sb-sidenav-menu-nested nav centered-div">
+                               <a class="nav-link text-white" href="doctor.html">
+                                   <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-user-plus" style="font-size: 1.3rem;"></i></div>
+                                   <span style="font-size: 1.0rem;">Registrar</span> 
+                               </a>
+                               <a class="nav-link text-white" href="profile.html">
+                                   <div class="sb-nav-link-icon text-white"><i class="fa-regular fa-id-card" style="font-size: 1.3rem;"></i></div>
+                                   <span style="font-size: 1.0rem;">Perfil</span>
+                                   
+                               </a>
+                                </nav>
+                           
+                   </div>
+                           <a class="nav-link text-white" href="facture.html">
+                               <div class="sb-nav-link-icon text-white"><i class="fa-regular fa-money-bill-1" style="font-size: 1.3rem;"></i></div>
+                               <span style="font-size: 1.0rem; font-weight: bold;">Facturacion </span>
+                                                             
+                           </a>
+                           <a class="nav-link collapsed text-white" href="" data-bs-toggle="collapse" data-bs-target="#collapseDownloads" aria-expanded="false" aria-controls="collapseDownloads">
+                               <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-calendar-days" style="font-size: 1.3rem;"></i></div>
+                               <span style="font-size: 1.0rem; font-weight: bold;">Calendario</span>
+                               
+                               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down" style="font-size: 1.3rem;"></i></div>
+                           </a>
+                           <div class="collapse" id="collapseDownloads" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
+                               <nav class="sb-sidenav-menu-nested nav centered-div">
+                                   <a class="nav-link text-white" href="cita.html">
+                                       <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-calendar-check" style="font-size: 1.3rem;"></i></div>
+                                       <span style="font-size: 1.0rem;"> Agendar cita</span>
+                                   </a>
+                                    </nav>
+                                </div>
+                                <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                   <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-microscope" style="font-size: 1.3rem;"></i></div>
+                                   <span style="font-size: 1.0rem; font-weight: bold;">Examenes medicos</span>
+                                
+                               <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down" style="font-size: 1.3rem;"></i></div>
+                           </a>
+                           <div class="collapse" id="collapseExample" aria-labelledby="headingThree" data-bs-parent="#sidenavAccordion">
+                               <nav class="sb-sidenav-menu-nested nav centered-div">
+                                   <a class="nav-link text-white" href="example.html">
+                                       <div class="sb-nav-link-icon text-white"><i class="fas fa-file-medical" style="font-size: 1.3rem;"></i></div>
+                                       <span style="font-size: 1.0rem;">Agregar</span>
+                                       
+                                   </a>
+                                    </nav>
+                               </div>
+                       </div>
+                   </nav>
+               </div>
+
+            <div id="layoutSidenav_content">
+                <main >
+                    <div id="calendar"> </div>
+
+                                        <!-- Modal para Agendar Evento -->
+                        <div class="modal fade" id="agendarModal" tabindex="-1" aria-labelledby="agendarModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="agendarModalLabel">Agendar Cita Medica</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="agendarForm">
+                                        <div class="row">
+                                            <div class=" col-6 mb-3">
+                                                <label for="paciente" class="form-label">Nombre del paicente</label>
+                                                <input type="text" class="form-control" id="paciente" required>
+                                            </div>
+                                            <div class="col-6 mb-3">
+                                                <label for="identificacion" class="form-label">Identificacion</label>
+                                                <input type="text" class="form-control" id="identificacion" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 mb-3">
+                                                <label for="acompanante" class="form-label">Acompañante</label>
+                                                <input type="text" class="form-control" id="acompanante" required>
+                                            </div>
+                                            <div class="col-6 mb-3">
+                                                <label for="telefono" class="form-label">Telefono</label>
+                                                <input type="text" class="form-control" id="telefono" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 mb-3">
+                                                <label for="fecha" class="form-label">Fecha de cita</label>
+                                                <input type="date" class="form-control" id="fecha" required>
+                                            </div>
+                                            <div class="col-6 mb-3">
+                                                <label for="hora" class="form-label">Hora de cita</label>
+                                                <input type="time" class="form-control" id="hora" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 mb-3">
+                                                <label for="doctor" class="form-label">Nombre del doctor</label>
+                                                <input type="text" class="form-control" id="doctor" required>
+                                            </div>
+                                            <div class="col-6 mb-3">
+                                                <label for="sexo" class="form-label">Sexo</label>
+                                                <input type="text" class="form-control" id="sexo" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6 mb-3">
+                                                <label for="preciocita" class="form-label">Precio de cita</label>
+                                                <input type="text" class="form-control" id="preciocita" required>
+                                            </div>
+                                            <div class="col-6 mb-3">
+                                                <label for="comentarios" class="form-label">Comentarios</label>
+                                                <input type="text" class="form-control" id="comentarios" required>
+                                            </div>
+                                        </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-primary" id="guardar">Guardar Evento</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                var calendarEl = document.getElementById('calendar');
+                        
+                                var calendar = new FullCalendar.Calendar(calendarEl, {
+                                    initialView: 'dayGridMonth',  // Vista de mes
+                                    events: [],  // Inicialmente no hay eventos, se agregarán dinámicamente
+                                    headerToolbar: {
+                                        left: 'prev,next today', 
+                                        center: 'title', 
+                                        right: 'timeGridWeek,timeGridDay,agendar' // Agregar el botón "Agendar"
+                                    },
+                                    customButtons: {
+                                        agendar: {
+                                            text: 'Agendar',
+                                            click: function() {
+                                                // Abre el modal cuando se hace clic en "Agendar"
+                                                var myModal = new bootstrap.Modal(document.getElementById('agendarModal'));
+                                                myModal.show();
+                                            }
+                                        }
+                                    },
+                                    eventClick: function(info) {
+                                        alert('Evento: ' + info.event.title + '\n' + info.event.extendedProps.description);
+                                    }
+                                });
+                        
+                                calendar.render();
+                        
+                                // Función para guardar el evento desde el modal
+                                document.getElementById('guardar').addEventListener('click', function() {
+                                    // Obtener los valores de los campos del formulario
+                                    var paciente = document.getElementById('paciente').value;
+                                    var identificacion = document.getElementById('identificacion').value;
+                                    var acompanante = document.getElementById('acompañante').value;
+                                    var telefono = document.getElementById('telefono').value;
+                                    var fecha = document.getElementById('fecha').value; // Fecha de la cita
+                                    var hora = document.getElementById('hora').value; // Hora de la cita
+                                    var doctor = document.getElementById('doctor').value;
+                                    var sexo = document.getElementById('sexo').value;
+                                    var preciocita = document.getElementById('precio').value;
+                                    var comentarios = document.getElementById('comentarios').value;
+
+                                   // Verificar si todos los campos fueron completados
+                                    if (paciente && identificacion && acompanante && telefono && fecha && hora && doctor && sexo && preciocita && comentarios) {
+                                        // Concatenar fecha y hora para FullCalendar
+                                        var fechaHora = fecha + 'T' + hora; // Formato: "YYYY-MM-DDTHH:mm"
+                        
+                                        // Agregar el evento al calendario con los datos del formulario
+                                        calendar.addEvent({
+                                            title: paciente + ' - ' + doctor, // Título del evento con nombre del paciente y doctor
+                                            start: fechaHora, // Fecha y hora del evento
+                                            description: comentarios,  // Descripción del evento
+                                            extendedProps: {
+                                                paciente: paciente,
+                                                identificacion: identificacion,
+                                                acompanante: acompanante,
+                                                telefono: telefono,
+                                                doctor: doctor,
+                                                sexo: sexo,
+                                                precio: preciocita
+                                            },
+                                            eventColor: '#378006', // Color para los eventos
+                                            editable: true, // Habilita el drag-and-drop de eventos
+                                            droppable: true, // Permite que los eventos se puedan arrastrar
+                                        });
+                        
+                                        // Cerrar el modal después de agregar el evento
+                                        var myModal = bootstrap.Modal.getInstance(document.getElementById('agendarModal'));
+                                        myModal.hide();
+                        
+                                        // Limpiar los campos del formulario
+                                        document.getElementById('agendarForm').reset();
+                                    } else {
+                                        alert("Por favor, completa todos los campos.");
+                                    }
+                                });
+                            });
+                        </script>
+                        
+                </main>
+            </div>
+
+
+
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="js/scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="assets/demo/chart-area-demo.js"></script>
+<script src="assets/demo/chart-bar-demo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+<script src="js/datatables-simple-demo.js"></script>
+
+</html>
